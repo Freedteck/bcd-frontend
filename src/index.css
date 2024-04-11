@@ -136,7 +136,6 @@ nav .nav-links {
   align-items: flex-start;
   border-radius: 10px;
   border: 2px solid #03005c1a;
-  cursor: pointer;
 }
 .task-card:hover .task-title {
   color: #40a9ff;
@@ -167,6 +166,7 @@ nav .nav-links {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  width: 100%;
 }
 .card-low .author {
   font-weight: 500;
@@ -534,24 +534,20 @@ label {
 }
 
 /* dialog */
-dialog {
-  width: 38rem;
+.tasks-info {
+  width: 48rem;
   margin: auto;
   padding: 32px;
   border-radius: 8px;
-  background-color: #001529;
-  border: none;
-  border-width: 2px;
-  border-style: solid;
-  border-color: #40a9ff;
+  background-color: #08223b;
 }
-.dialog-container {
+.tasks-container {
   width: 100%;
   display: flex;
   flex-direction: column;
   gap: 32px;
 }
-.cancel-dialog {
+.cancel-tasks {
   background-color: #ffffff;
   width: 32px;
   height: 32px;
@@ -563,7 +559,7 @@ dialog {
   cursor: pointer;
   justify-content: center;
 }
-.cancel-dialog:hover {
+.cancel-tasks:hover {
   background-color: rgb(129, 7, 7);
   color: #fff;
 }
@@ -572,21 +568,7 @@ dialog {
   color: #8e989c;
   font-size: 1.25rem;
 }
-/* .img-name {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-} */
-/* .img-name .img {
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  overflow: hidden;
-} */
-/* .img-name .img img {
-  width: 100%;
-} */
-.dialog-card {
+.tasks-card {
   border: 1px solid #40a9ff;
   display: flex;
   flex-direction: column;
@@ -594,7 +576,7 @@ dialog {
   gap: 32px;
   border-radius: 8px;
 }
-.dialog-card .texts {
+.tasks-card .texts {
   display: flex;
   flex-direction: column;
   gap: 32px;
@@ -603,12 +585,12 @@ dialog {
   font-size: 1.5rem;
   text-align: center;
 }
-.dialog-card .skills-req {
+.tasks-card .skills-req {
   display: flex;
   flex-direction: column;
   gap: 16px;
 }
-.dialog-card .skills {
+.tasks-card .skills {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 8px;

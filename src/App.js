@@ -5,6 +5,7 @@ import Explore from "./pages/Explore";
 import Form from "./pages/Form";
 import Footer from "./components/Footer";
 import Create from "./pages/Create";
+import TaskPage from "./pages/TaskPage";
 
 function App() {
   return (
@@ -21,6 +22,9 @@ function App() {
             </Route>
             <Route path='/connect'>
               <Form />
+            </Route>
+            <Route path='/tasks/:id'>
+              <TaskPage />
             </Route>
             <Route path='/create'>
               <Create />
