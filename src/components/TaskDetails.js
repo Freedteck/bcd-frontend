@@ -1,21 +1,6 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
-const Dialog = ({ tasks, visible, onClose, setAppliedStatus }) => {
-  const [text, setText] = useState("Accept task");
-  const [isAccepted, setIsAccepted] = useState(false);
-  const [isCompleted, setIsCompleted] = useState(false);
-  
-  const handleAccept = () => {
-    if (isAccepted) {
-      setText("Task completed");
-      setAppliedStatus('Task completed')
-      setIsCompleted(true);
-    } else {
-      setIsAccepted(true);
-      setText("Finish task");
-      setAppliedStatus('Finish task')
-    }
-  };
+const Dialog = ({ tasks, visible, onClose }) => {
   useEffect(() => {
     const dialogElement = document.querySelector("dialog");
     if (visible) {
@@ -67,13 +52,7 @@ const Dialog = ({ tasks, visible, onClose, setAppliedStatus }) => {
           </div>
           <div className='pay-btn'>
             <p className='task-payment'>{tasks.reward} USD</p>
-            <button
-              className='btn cta-button'
-              disabled={isCompleted}
-              style={{background: isCompleted ? "transparent" : "", cursor:isCompleted? "auto" : ""}}
-              onClick={handleAccept}>
-              {text}
-            </button>
+            <button className='btn cta-button'>Accept task</button>
           </div>
         </div>
       </div>

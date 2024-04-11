@@ -2,21 +2,16 @@ import { useState } from "react";
 import Dialog from "./TaskDetails";
 // import useFetch from "../hooks/useFetch";
 
-const Tasks = ({ taskss, endIndex }) => {
+const Tasks = ({ tasks, endIndex }) => {
   const [showDialog, setShowDialog] = useState(false);
   const [selectedTask, setSelectedTask] = useState(null);
-  const [appliedStatus, setAppliedStatus] = useState(null);
 
   const handleTaskClick = (task) => {
     setSelectedTask(task);
     setShowDialog(true);
   };
 
-  const handleSetAppliedStatus = (status) => {
-    setAppliedStatus(status);
-  };
-
-  const tasksToDisplay = taskss.slice(0, endIndex);
+  const tasksToDisplay = tasks.slice(0, endIndex);
   return (
     <>
       {tasksToDisplay.map((task, index) => (
@@ -36,9 +31,7 @@ const Tasks = ({ taskss, endIndex }) => {
               <button
                 className='btn cta-button'
                 onClick={() => handleTaskClick(task)}>
-                {selectedTask === task && appliedStatus
-                  ? appliedStatus
-                  : "Apply now"}
+                Apply Now
               </button>
             </div>
             <p className='author'>By {task.employer}</p>
@@ -50,7 +43,6 @@ const Tasks = ({ taskss, endIndex }) => {
           tasks={selectedTask}
           visible={showDialog}
           onClose={() => setShowDialog(false)}
-          setAppliedStatus={handleSetAppliedStatus}
         />
       )}
     </>

@@ -4,6 +4,7 @@ import Home from "./pages/Home";
 import Explore from "./pages/Explore";
 import Form from "./pages/Form";
 import Footer from "./components/Footer";
+import Create from "./pages/Create";
 
 function App() {
   return (
@@ -20,6 +21,9 @@ function App() {
             </Route>
             <Route path='/connect'>
               <Form />
+            </Route>
+            <Route path='/create'>
+              <Create />
             </Route>
           </Switch>
         </div>

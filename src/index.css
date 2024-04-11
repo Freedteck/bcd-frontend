@@ -438,6 +438,48 @@ button {
   text-align: center;
 }
 
+/* Create */
+.create {
+  display: flex;
+  flex-direction: column;
+  margin: 50px auto;
+  gap: 32px;
+  max-width: 48rem;
+}
+.create h1,
+.create h2 {
+  align-self: center;
+}
+.create .connect-acc {
+  background-color: #08223b;
+  border-radius: 8px;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+label {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.create input, textarea {
+  padding: 10px 20px;
+  border-radius: 8px;
+  border: 1px solid #fff;
+  outline: none;
+  background-color: transparent;
+  resize: none;
+}
+.create input:focus, textarea:focus {
+  border: 1px solid #40a9ff;
+}
+
 /* FOrms */
 .forms {
   display: flex;
@@ -468,14 +510,14 @@ label {
   flex-direction: column;
   gap: 8px;
 }
-.forms input {
+.forms input, textarea {
   padding: 10px 20px;
   border-radius: 8px;
   border: 1px solid #fff;
   outline: none;
   background-color: transparent;
 }
-.forms input:focus {
+.forms input:focus, textarea:focus {
   border: 1px solid #40a9ff;
 }
 .meta-mask {
