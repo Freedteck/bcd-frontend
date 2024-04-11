@@ -11,7 +11,7 @@ const Feature = () => {
       <div className='featured-tasks row'>
         {isPending && <div style={{color: 'green', textAlign: "center", fontSize: '18px'}}>Loading ... </div>}
         {error && <div style={{color: 'red', textAlign: "center", fontSize: '18px'}}>{error}</div>}
-        {tasks && <Tasks taskss={tasks} endIndex={6} />}
+        {tasks && <Tasks tasks={tasks} endIndex={6} />}
       </div>
       <Link to="/explore" className='btn more'>
         Explore More
