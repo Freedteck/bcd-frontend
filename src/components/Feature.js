@@ -2,9 +2,9 @@ import { Link } from "react-router-dom";
 import Tasks from "./Tasks";
 import useFetch from "../hooks/useFetch";
 
-const Feature = () => {
 
-  const { tasks, isPending, error } = useFetch("http://localhost:8000/tasks");
+const Feature = () => {
+  const {tasks, isPending, error} = useFetch('getAllTasks')
   return (
     <div className='featured-tasks-cont container'>
       <h2 className='section-heading'>Featured Tasks</h2>

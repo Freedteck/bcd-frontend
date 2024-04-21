@@ -6,34 +6,37 @@ import Form from "./pages/Form";
 import Footer from "./components/Footer";
 import Create from "./pages/Create";
 import TaskPage from "./pages/TaskPage";
+import { Web3Provider } from "./components/Web3Provider";
 
 function App() {
   return (
-    <Router>
-      <div className='App'>
-        <Navbar />
-        <div className='contents'>
-          <Switch>
-            <Route exact path='/'>
-              <Home />
-            </Route>
-            <Route path='/explore'>
-              <Explore />
-            </Route>
-            <Route path='/connect'>
-              <Form />
-            </Route>
-            <Route path='/tasks/:id'>
-              <TaskPage />
-            </Route>
-            <Route path='/create'>
-              <Create />
-            </Route>
-          </Switch>
+    <Web3Provider>
+      <Router>
+        <div className="App">
+          <Navbar />
+          <div className="contents">
+            <Switch>
+              <Route exact path="/">
+                <Home />
+              </Route>
+              <Route path="/explore">
+                <Explore />
+              </Route>
+              <Route path="/connect">
+                <Form />
+              </Route>
+              <Route path="/tasks/:id">
+                <TaskPage />
+              </Route>
+              <Route path="/create">
+                <Create />
+              </Route>
+            </Switch>
+          </div>
+          <Footer />
         </div>
-        <Footer />
-      </div>
-    </Router>
+      </Router>
+    </Web3Provider>
   );
 }
 

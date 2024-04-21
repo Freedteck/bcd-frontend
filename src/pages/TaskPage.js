@@ -3,7 +3,7 @@ import useFetch from "../hooks/useFetch";
 import TaskInfo from "../components/TaskInfo";
 const TaskPage = () => {
   const { id } = useParams();
-  const { tasks, error, isPending } = useFetch("http://localhost:8000/tasks/" + id);
+  const { tasks, error, isPending } = useFetch('getTask', id);
   return (
     <div className="task-page container">
       {isPending && (
@@ -16,7 +16,7 @@ const TaskPage = () => {
           {error}
         </div>
       )}
-      {tasks && <TaskInfo tasks={tasks} />}
+      {tasks && <TaskInfo task={tasks} />}
     </div>
   );
 };

@@ -3,12 +3,12 @@ import Tasks from "../components/Tasks";
 import useFetch from "../hooks/useFetch";
 
 const Explore = () => {
-  const { tasks, isPending, error } = useFetch("http://localhost:8000/tasks");
+  const { tasks, isPending, error } = useFetch("getAllTasks");
   const [endIndex, setEndIndex] = useState(6);
   const latest = [];
 
   const getLatestTAsks = () => {
-    for (let i = tasks.length - 1; i > 0; i--) {
+    for (let i = tasks.length - 1; i >= 0; i--) {
       latest.push(tasks[i]);
     }
     return latest;

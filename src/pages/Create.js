@@ -1,27 +1,43 @@
+import { ethers, formatEther, parseEther } from "ethers";
 import { useState } from "react";
 import {useHistory} from 'react-router-dom'
+import abi from '../abi/MicroTaskAbi.json'
 
 const Create = () => {
   const [title, setTitle] = useState('')
   const [skills, setSkills] = useState([])
+  const [days, setDays] = useState([])
   const [description, setDescription] = useState('')
   const [reward, setReward] = useState(1)
   const [isPending, setIsPending] = useState(false)
   const history = useHistory()
 
-  const handleSubmit = (e) => {
+  const contractAddress = '0xfcDf4673d9BD57DD25f8BCdCCa9a19ae60AA5e66'
+  const depositAmount = parseEther('0.1')
+  formatEther(depositAmount)
+
+  
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    const sortedSkills = skills.split(',')
-    const task = {employer: 'New Employer', title, description, skills:sortedSkills, deadline:"", reward, isCompleted: false, worker: null, status: null}
-    fetch('http://localhost:8000/tasks', {
-      method: 'POST',
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(task)
-    }).then(() => {
-      setIsPending(true)
-      history.push('/')
-    })
-  }
+    setIsPending(true);
+
+    try {
+      // Connect to the provider
+      const provider = new ethers.BrowserProvider(window.ethereum);
+      const signer = await provider.getSigner();
+      const contract = new ethers.Contract(contractAddress, abi, signer);
+      const daysInSeconds = days * 24 * 60 * 60; 
+      // Call the createTask function on the contract
+      await contract.createTask(description, reward, skills, daysInSeconds, { value: depositAmount });
+
+      setIsPending(false);
+      history.push('/');
+    } catch (error) {
+      console.error('Error creating task:', error);
+      setIsPending(false);
+    }
+  };
+
   return (
     <div className="create container">
       <h2>Create a new Task</h2>
@@ -51,6 +67,18 @@ const Create = () => {
               onChange={(e) => setSkills(e.target.value)}
             />
           </label>
+          <label htmlFor="days">
+            DAys to complete project
+            <input
+              type="number"
+              name="days"
+              id="days"
+              value={days}
+              placeholder="How many days is required to complete this task?"
+              required
+              onChange={(e) => setDays(e.target.value)}
+            />
+          </label>
           <label htmlFor="reward">
             Preferred reward
             <input
@@ -59,7 +87,7 @@ const Create = () => {
               id="reward"
               value={reward}
               placeholder="Enter the reward you want to give for this task)"
-              min={1}
+              min={0}
               required
               onChange={(e) => setReward(e.target.value)}
             />
